@@ -1,14 +1,7 @@
-import MovieList from '../../components/MovieList/MovieList';
-import { getMovies } from '../../fakeApi';
+// import pageCss from './MoviePage.module.css'
 
 const MoviePage = () => {
-  const movies = getMovies();
-
-  return (
-    <main>
-      <MovieList movies={movies} />
-    </main>
-  );
+  return <>Movie</>;
 };
 
 export default MoviePage;

@@ -1,7 +1,14 @@
-// import MovieList from '../../components/MovieList/MovieList';
+import MovieList from '../../components/MovieList/MovieList';
+import { getMovies } from '../../fakeApi';
 
 const HomePage = () => {
-  return <div>Home</div>;
+  const movies = getMovies();
+
+  return (
+    <main>
+      <MovieList movies={movies} />
+    </main>
+  );
 };
 
 export default HomePage;
