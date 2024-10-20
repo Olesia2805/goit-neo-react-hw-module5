@@ -4,7 +4,7 @@ import css from './MovieList.module.css';
 export const MovieList = ({ movies }) => {
   return (
     <>
-      {movies.map((movie) => (
+      {movies.map(movie => (
         <div key={movie.id} className={css.cardWrapper}>
           <Link to={`${movie.id}`}>
             <img src="https://via.placeholder.com/200x100" alt="" />
