@@ -21,11 +21,11 @@ const App = () => {
   return (
     <Container>
       <Section>
-        <Navigation /> 
+        <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movie" element={<MoviePage />} />
-          <Route path="/movie/:movieId" element={<MovieDetailsPage />} >
+          <Route path="/movie/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
