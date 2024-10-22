@@ -14,7 +14,7 @@ const NotFoundPage = () => {
                 <h1 className="text-center">404</h1>
               </div>
               <div className={notFoundCss.contantBox404}>
-                <h3 className={notFoundCss.h2}>Looks like you're lost</h3>
+                <h3 className={notFoundCss.h2}>Looks like you are lost</h3>
                 <p>The page you are looking for is not available!</p>
                 <Link to="/" className={notFoundCss.link404}>
                   Go to Home
