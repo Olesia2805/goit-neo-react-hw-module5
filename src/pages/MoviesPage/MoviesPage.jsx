@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { toast } from 'react-hot-toast';
 import MovieList from '../../components/MovieList/MovieList';
-import { fetchMovies } from '../../api/movies-api';
+import movieFAKE from '../../fakeApi.json';
+// import { fetchMovies } from '../../api/movies-api';
 
 const MoviePage = () => {
   const [movies, setMovies] = useState([]);
@@ -13,24 +14,23 @@ const MoviePage = () => {
   useEffect(() => {
     if (!inputValue) return;
 
-    const getPage = async () => {
-      try {
-        setError(false);
-        setIsLoading(true);
+    const getMovies = () => {
+      setError(false);
+      setIsLoading(true);
 
-        const res = await fetchMovies(inputValue);
-        if (res.length === 0) {
-          toast.error('Please enter the correct word');
-        }
-      } catch (error) {
-        console.log(error);
-        setError(true);
-      } finally {
-        setIsLoading(false);
+      const filterMovies = movieFAKE.filter(movie =>
+        movie.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+
+      if (filterMovies.length === 0) {
+        toast.error('No movies found.');
       }
+
+      setMovies(filterMovies);
+      setIsLoading(false);
     };
 
-    getPage();
+    getMovies();
   }, [inputValue]);
 
   const handleSubmit = inputValue => {
@@ -38,11 +38,9 @@ const MoviePage = () => {
       toast.error('Please enter a valid search term');
       return;
     }
-
     setInputValue(inputValue);
     setMovies([]);
   };
-
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
@@ -50,7 +48,7 @@ const MoviePage = () => {
       {error && <p>Something went wrong. Please try again.</p>}
       <div>
         {movies.length > 0 ? (
-          <MovieList />
+          <MovieList movies={movies} />
         ) : (
           !isLoading &&
           !error && <p>No movies to display. Please search for a movie.</p>

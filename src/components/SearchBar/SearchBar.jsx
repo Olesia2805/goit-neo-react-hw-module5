@@ -18,7 +18,7 @@ const SearchBar = ({ onSubmit }) => {
     }
     if (inputValue.trim()) {
       onSubmit(inputValue);
-      console.log(inputValue);
+      setInputValue('');
     }
   };
 
