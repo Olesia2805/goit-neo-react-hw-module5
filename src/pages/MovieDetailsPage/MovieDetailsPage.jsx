@@ -1,5 +1,5 @@
 // import detailsCss from './MovieDetailsPage.module.css'
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const MovieDetailsPage = () => {
   return (
@@ -20,10 +20,10 @@ const MovieDetailsPage = () => {
       </p>
       <ul>
         <li>
-          <Link to="cast">Get to know the team</Link>
+          <NavLink to="cast">Get to know the team</NavLink>
         </li>
         <li>
-          <Link to="reviews">Go through the reviews</Link>
+          <NavLink to="reviews">Go through the reviews</NavLink>
         </li>
       </ul>
       <Outlet />

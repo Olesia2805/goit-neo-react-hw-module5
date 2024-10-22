@@ -3,11 +3,13 @@ import MovieCard from '../MovieCard/MovieCard';
 
 export const MovieList = ({ movies }) => {
   return (
-    <div className={css.list}>
+    <ul className={css.list}>
       {movies.map(movie => (
-        <MovieCard movie={movie} key={movie.id} />
+        <li key={movie.id} className={css.cardWrapper}>
+          <MovieCard movie={movie} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

@@ -1,5 +1,9 @@
 :root {
   --background-primary-color: #f4f4f4;
   --content-text-color: #131313;
+  --accent-color: #39ac31;
   --content-font-family: 'Indie Flower', serif;
+  --title-font-family: 'Short Stack', Sans-serif;
+  --text-font-family: 'Caveat', Monospace;
+  --accent-color-hover: #2e8b26;
 }

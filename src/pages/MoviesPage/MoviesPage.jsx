@@ -41,6 +41,7 @@ const MoviePage = () => {
     setInputValue(inputValue);
     setMovies([]);
   };
+
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />

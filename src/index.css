@@ -15,10 +15,25 @@ h5,
 h6,
 p {
   margin: 0;
+  font-family: var(--text-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: var(--title-font-family);
+}
+
+p {
+  font-family: var(--text-font-family);
+  font-size: 24px;
 }
 
 ul,
-ol {
+ol{
   margin: 0;
   padding: 0;
   list-style: none;

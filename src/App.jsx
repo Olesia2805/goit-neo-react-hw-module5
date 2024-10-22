@@ -13,25 +13,24 @@ import Container from './components/Container/Container';
 // import Loader from './components/Loader/Loader';
 import MovieCast from './components/MovieCast/MovieCast';
 import MovieReviews from './components/MovieReviews/MovieReviews';
-// import SearchBar from './components/SearchBar/SearchBar';
 
+import moviesFAKE from './fakeApi.json';
 // import css from './App.module.css';
 
 const App = () => {
   return (
     <Container>
-      <Section>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movie" element={<MoviePage />} />
-          <Route path="/movie/:movieId" element={<MovieDetailsPage />}>
-            <Route path="cast" element={<MovieCast />} />
-            <Route path="reviews" element={<MovieReviews />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Section>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<HomePage moviesFAKE={moviesFAKE} />} />
+        <Route path="/movie" element={<MoviePage moviesFAKE={moviesFAKE} />} />
+        <Route path="/movie/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Section></Section>
     </Container>
   );
 };
