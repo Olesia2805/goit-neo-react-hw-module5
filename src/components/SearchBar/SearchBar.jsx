@@ -12,7 +12,12 @@ const SearchBar = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (inputValue.trim() === '') {
-      toast.error('Please enter a search term');
+      toast.error('Please enter a search term', {
+        style: {
+          background: 'red',
+          color: '#fff',
+        },
+      });
       setInputValue('');
       return;
     }

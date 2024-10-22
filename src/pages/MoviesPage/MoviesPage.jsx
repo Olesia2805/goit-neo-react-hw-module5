@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { toast } from 'react-hot-toast';
 import MovieList from '../../components/MovieList/MovieList';
-import movieFAKE from '../../fakeApi.json';
 import Loader from '../../components/Loader/Loader';
-// import { fetchMovies } from '../../api/movies-api';
+import { fetchMovies } from '../../api/movies-api';
 
 const MoviePage = () => {
   const [movies, setMovies] = useState([]);
@@ -15,41 +14,58 @@ const MoviePage = () => {
   useEffect(() => {
     if (!inputValue) return;
 
-    const getMovies = () => {
-      setError(false);
-      setIsLoading(true);
+    const getMovies = async inputValue => {
+      try {
+        setError(false);
+        setIsLoading(true);
+        const searchMovies = await fetchMovies(inputValue);
 
-      // const filterMovies = movieFAKE.filter(movie =>
-      //   movie.title.toLowerCase().startsWith(inputValue.toLowerCase())
-      // );
+        if (searchMovies.length === 0) {
+          toast.error('Please enter the correct word', {
+            style: {
+              background: 'red',
+              color: '#fff',
+            },
+          });
+          return;
+        }
 
-      // if (filterMovies.length === 0) {
-      //   toast.error('No movies found.');
-      // }
+        setMovies(searchMovies);
 
-      // setMovies(filterMovies);
-      // setIsLoading(false);
-
-      setTimeout(() => {
-        const filteredMovies = movieFAKE.filter(movie =>
+        const filterMovies = searchMovies.filter(movie =>
           movie.title.toLowerCase().startsWith(inputValue.toLowerCase())
         );
 
-        if (filteredMovies.length === 0) {
-          toast.error('No movies found. Please enter the correct word');
+        if (filterMovies.length === 0) {
+          toast.error('No movies found.', {
+            style: {
+              background: 'red',
+              color: '#fff',
+            },
+          });
+          return;
         }
 
-        setMovies(filteredMovies);
-        setIsLoading(false); // Завантаження завершене
-      }, 2000); // Затримка в 2 секунди
+        setMovies(filterMovies);
+      } catch (error) {
+        setError(true);
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    getMovies();
+    getMovies(inputValue);
   }, [inputValue]);
 
   const handleSubmit = inputValue => {
     if (inputValue.trim() === '') {
-      toast.error('Please enter a valid search term');
+      toast.error('Please enter a valid search term', {
+        style: {
+          background: 'red',
+          color: '#fff',
+        },
+      });
       return;
     }
     setInputValue(inputValue);

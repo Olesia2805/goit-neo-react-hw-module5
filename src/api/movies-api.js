@@ -19,25 +19,28 @@ export const tredingMovies = async () => {
       },
     });
 
-      return response.data.results;
+    return response.data.results;
+    
   } catch (error) {
     console.error('Error fetching movies:', error.message);
   }
 };
 
 
-// export const fetchMovies = async (query) => {
-//   try {
-//     const response = await axiosInstance.get('/search/movie', {
-//       params: {
-//         query,
-//         language: 'en-US',
-//         include_adult: false,
-//       },
-//     });
-//     return response.data.results;
-//   } catch (error) {
-//     console.error('Error fetching movies:', error);
-//     throw error;
-//   }
-// };
+export const fetchMovies = async (query) => {
+  try {
+    const response = await axiosInstance.get('/search/movie', {
+      params: {
+        query,
+        language: 'en-US',
+        include_adult: false,
+      },
+    });
+
+    return response.data.results;
+
+  } catch (error) {
+
+    console.error('Error fetching movies:', error.message);
+  }
+};
