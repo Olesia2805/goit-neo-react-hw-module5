@@ -6,7 +6,7 @@ const MovieCard = ({ movie }) => {
     <Link to={`/movies/${movie.id}`} className={cardCss.cardLink}>
       <img
         className={cardCss.movieImg}
-        src="https://via.placeholder.com/200x100"
+        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={movie.title}
       />
       <p className={cardCss.movieName}>{movie.title}</p>

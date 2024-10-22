@@ -1,13 +1,29 @@
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MovieList from '../../components/MovieList/MovieList';
 import homeCss from './HomePage.module.css';
-// import { trendingMovies } from '../../api/movies-api';
+import { tredingMovies } from '../../api/movies-api';
 
-const HomePage = ({ moviesFAKE }) => {
+const HomePage = () => {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTrendingMovies = async () => {
+      try {
+        const trendingMovies = await tredingMovies();
+        setMovies(trendingMovies);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTrendingMovies();
+  }, []);
+
   return (
     <main>
       <h1 className={homeCss.header}>Trending Today</h1>
-      {<MovieList movies={moviesFAKE} />}
+      {error ? <p>{error}</p> : <MovieList movies={movies} />}
     </main>
   );
 };

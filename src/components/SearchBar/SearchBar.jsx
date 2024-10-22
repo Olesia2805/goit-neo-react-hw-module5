@@ -23,25 +23,23 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <header className={searchCss.header}>
-      <form onSubmit={handleSubmit} className={searchCss.form}>
-        <label className={`${searchCss.label}`}>
-          <input
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search a film here"
-            className={searchCss.input}
-            value={inputValue}
-            onChange={handleChange}
-          />
-        </label>
+    <form onSubmit={handleSubmit} className={searchCss.form}>
+      <label className={`${searchCss.label}`}>
+        <input
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search a film here"
+          className={searchCss.input}
+          value={inputValue}
+          onChange={handleChange}
+        />
+      </label>
 
-        <button type="submit" className={searchCss.submitButton}>
-          Search
-        </button>
-      </form>
-    </header>
+      <button type="submit" className={searchCss.submitButton}>
+        Search
+      </button>
+    </form>
   );
 };
 

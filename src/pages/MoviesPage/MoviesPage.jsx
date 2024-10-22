@@ -3,6 +3,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { toast } from 'react-hot-toast';
 import MovieList from '../../components/MovieList/MovieList';
 import movieFAKE from '../../fakeApi.json';
+import Loader from '../../components/Loader/Loader';
 // import { fetchMovies } from '../../api/movies-api';
 
 const MoviePage = () => {
@@ -18,16 +19,29 @@ const MoviePage = () => {
       setError(false);
       setIsLoading(true);
 
-      const filterMovies = movieFAKE.filter(movie =>
-        movie.title.toLowerCase().includes(inputValue.toLowerCase())
-      );
+      // const filterMovies = movieFAKE.filter(movie =>
+      //   movie.title.toLowerCase().startsWith(inputValue.toLowerCase())
+      // );
 
-      if (filterMovies.length === 0) {
-        toast.error('No movies found.');
-      }
+      // if (filterMovies.length === 0) {
+      //   toast.error('No movies found.');
+      // }
 
-      setMovies(filterMovies);
-      setIsLoading(false);
+      // setMovies(filterMovies);
+      // setIsLoading(false);
+
+      setTimeout(() => {
+        const filteredMovies = movieFAKE.filter(movie =>
+          movie.title.toLowerCase().startsWith(inputValue.toLowerCase())
+        );
+
+        if (filteredMovies.length === 0) {
+          toast.error('No movies found. Please enter the correct word');
+        }
+
+        setMovies(filteredMovies);
+        setIsLoading(false); // Завантаження завершене
+      }, 2000); // Затримка в 2 секунди
     };
 
     getMovies();
@@ -45,7 +59,7 @@ const MoviePage = () => {
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader />}
       {error && <p>Something went wrong. Please try again.</p>}
       <div>
         {movies.length > 0 ? (

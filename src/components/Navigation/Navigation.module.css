@@ -1,0 +1,25 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: #333;
+    font-family: var(--title-font-family);
+}
+
+.link {
+    color: var(--background-primary-color);
+    text-decoration: none;
+    padding: 6px 15px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.link:hover {
+    background-color: var(--accent-color-hover);
+}
+
+.isActive {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
