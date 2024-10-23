@@ -1,34 +1,74 @@
-// import detailsCss from './MovieDetailsPage.module.css'
-import { NavLink, Outlet } from 'react-router-dom';
+import detailsCss from './MovieDetailsPage.module.css';
+import { useEffect, useState } from 'react';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { fetchSingleMovie } from '../../api/movies-api';
+import Loader from '../../components/Loader/Loader';
 
 const MovieDetailsPage = () => {
+  const { movieId } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getSingleMovie = async () => {
+      try {
+        setError(false);
+        setIsLoading(true);
+        const singleMovie = await fetchSingleMovie(movieId);
+        setMovie(singleMovie);
+      } catch (error) {
+        setError(true);
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getSingleMovie();
+  }, [movieId]);
+
   return (
-    <main>
-      <h1>About Us</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-        laborum amet ab cumque sit nihil dolore modi error repudiandae
-        perspiciatis atque voluptas corrupti, doloribus ex maiores quam magni
-        mollitia illum dolor quis alias in sequi quod. Sunt ex numquam hic
-        asperiores facere natus sapiente cum neque laudantium quam, expedita
-        voluptates atque quia aspernatur saepe illo, rem quasi praesentium
-        aliquid sed inventore obcaecati veniam? Nisi magnam vero, dolore
-        praesentium totam ducimus similique asperiores culpa, eius amet
-        repudiandae quam ut. Architecto commodi, tempore ut nostrum voluptas
-        dolorum illum voluptatum dolores! Quas perferendis quis alias excepturi
-        eaque voluptatibus eveniet error, nulla rem iusto?
-      </p>
-      <ul>
-        <li>
-          <NavLink to="cast">Get to know the team</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Go through the reviews</NavLink>
-        </li>
-      </ul>
+    <main className={detailsCss.main}>
+      <button>Go back</button>
+      {isLoading && <Loader />}
+      {error && <p>Something went wrong. Please try again.</p>}
+      {movie ? (
+        <div className={detailsCss.movieDetails}>
+          <img
+            className={detailsCss.movieImg}
+            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            alt={movie.title}
+          />
+          <div className={detailsCss.info}>
+            <h2 className={detailsCss.title}>{movie.title}</h2>
+            <p className={detailsCss.score}>
+              User Score: {movie.vote_average * 10}%
+            </p>
+            <h3 className={detailsCss.overview}>Overview</h3>
+            <p className={detailsCss.textOverview}>{movie.overview}</p>
+            <h4 className={detailsCss.genres}>Genres</h4>
+            <p className={detailsCss.genersList}>
+              {movie.genres.map(genre => genre.name).join(', ')}
+            </p>
+          </div>
+        </div>
+      ) : (
+        !isLoading && !error && <p>No movies to display.</p>
+      )}
+      <div className={detailsCss.additionalInfo}>
+        <p>Additional information</p>
+        <ul>
+          <li>
+            <NavLink to="cast">Cast</NavLink>
+          </li>
+          <li>
+            <NavLink to="reviews">Reviews</NavLink>
+          </li>
+        </ul>
+      </div>
       <Outlet />
     </main>
   );
 };
-
 export default MovieDetailsPage;

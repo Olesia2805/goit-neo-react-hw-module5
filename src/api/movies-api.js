@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 
 export const tredingMovies = async () => {
   try {
-    console.log('Fetching trending movies...');
     const response = await axiosInstance.get('/trending/movie/day', {
       params: {
         language: 'en-US',
@@ -40,7 +39,36 @@ export const fetchMovies = async (query) => {
     return response.data.results;
 
   } catch (error) {
+    console.error('Error fetching movies:', error.message);
+  }
+};
 
+export const fetchSingleMovie = async (movieId) => {
+  try {
+    const response = await axiosInstance.get(`/movie/${movieId}`);
+    return response.data;
+
+  } catch (error) {
+    console.error('Error fetching movies:', error.message);
+  }
+};
+
+export const fetchMovieCast = async (movieId) => {
+  try {
+    const response = await axiosInstance.get(`/movie/${movieId}/credits`);
+    return response.data.results;
+
+  } catch (error) {
+    console.error('Error fetching movies:', error.message);
+  }
+};
+
+export const fetchMovieReviews = async (movieId) => {
+  try {
+    const response = await axiosInstance.get(`/movie/${movieId}/reviews`);
+    return response.data.results;
+
+  } catch (error) {
     console.error('Error fetching movies:', error.message);
   }
 };

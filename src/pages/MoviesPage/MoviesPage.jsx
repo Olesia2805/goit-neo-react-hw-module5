@@ -77,14 +77,14 @@ const MoviePage = () => {
       <SearchBar onSubmit={handleSubmit} />
       {isLoading && <Loader />}
       {error && <p>Something went wrong. Please try again.</p>}
-      <div>
+      <>
         {movies.length > 0 ? (
           <MovieList movies={movies} />
         ) : (
           !isLoading &&
           !error && <p>No movies to display. Please search for a movie.</p>
         )}
-      </div>
+      </>
     </>
   );
 };

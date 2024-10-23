@@ -9,13 +9,9 @@ import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 
 import Section from './components/Section/Section';
 import Container from './components/Container/Container';
-// import ErrorMessage from './components/ErrorMessage/ErrorMessage'
-// import Loader from './components/Loader/Loader';
 import MovieCast from './components/MovieCast/MovieCast';
 import MovieReviews from './components/MovieReviews/MovieReviews';
 import { Toaster } from 'react-hot-toast';
-
-// import css from './App.module.css';
 
 const App = () => {
   return (
