@@ -6,8 +6,8 @@
 
 .cardWrapper {
     position: relative;
-    width: 250px;
-    height: 200px;
+    width: 350px;
+    height: 300px;
     overflow: hidden;
     transition: transform 0.5s ease;
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { fetchSingleMovie } from '../../api/movies-api';
 import Loader from '../../components/Loader/Loader';
+import { IoArrowUndoOutline } from 'react-icons/io5';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -30,7 +31,9 @@ const MovieDetailsPage = () => {
 
   return (
     <main className={detailsCss.main}>
-      <button>Go back</button>
+      <button className={detailsCss.submitButton}>
+        <IoArrowUndoOutline /> Go back
+      </button>
       {isLoading && <Loader />}
       {error && <p>Something went wrong. Please try again.</p>}
       {movie ? (
