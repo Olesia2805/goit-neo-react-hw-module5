@@ -7,7 +7,7 @@ const SearchBar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
   const [params, setParams] = useSearchParams();
 
-  const queryValue = params.get('title');
+  const queryValue = params.get('title') ?? '';
 
   useEffect(() => {
     if (queryValue) {
@@ -23,6 +23,7 @@ const SearchBar = ({ onSubmit }) => {
 
   const handleChange = e => {
     const value = e.target.value;
+    setInputValue(value);
 
     if (value.trim() === '') {
       params.delete('title');
