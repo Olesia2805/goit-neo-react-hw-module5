@@ -1,0 +1,21 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.cardWrapper {
+    flex: 0 1 100px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.cardWrapper:hover {
+    transform: scale(1.05);
+}

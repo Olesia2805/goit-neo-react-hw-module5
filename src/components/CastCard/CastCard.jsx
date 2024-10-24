@@ -8,8 +8,10 @@ const CastCard = ({ cast }) => {
         src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
         alt={cast.name}
       />
-      <h5>{cast.name}</h5>
-      <p>Character: {cast.character}</p>
+      <h5 className={castCss.name}>{cast.name}</h5>
+      <p className={castCss.character}>
+        Character: <span>{cast.character || 'unknown'}</span>
+      </p>
     </>
   );
 };

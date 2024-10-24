@@ -60,7 +60,7 @@ const MovieDetailsPage = () => {
         !isLoading && !error && <p>No movies to display.</p>
       )}
       <div className={detailsCss.additionalInfo}>
-        <p>Additional information</p>
+        <p>ADDITIONAL INFORMATION</p>
         <ul>
           <li>
             <NavLink to="cast">Cast</NavLink>
