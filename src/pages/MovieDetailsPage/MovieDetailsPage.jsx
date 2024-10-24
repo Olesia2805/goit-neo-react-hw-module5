@@ -46,7 +46,7 @@ const MovieDetailsPage = () => {
           <div className={detailsCss.info}>
             <h2 className={detailsCss.title}>{movie.title}</h2>
             <p className={detailsCss.score}>
-              User Score: {movie.vote_average * 10}%
+              User Score: {(movie.vote_average * 10).toFixed(1)}%
             </p>
             <h3 className={detailsCss.overview}>Overview</h3>
             <p className={detailsCss.textOverview}>{movie.overview}</p>

@@ -6,15 +6,16 @@
 
 .movieImg {
     max-width: 400px;
-        max-height: 340px;
-        border-radius: 10px;
-        display: block;
-        border: 1.5px solid transparent;
-        box-shadow:
-            0 0 1px var(--accent-color),
-            0 0 6px var(--accent-color),
-            0 0 9px var(--accent-color),
-            0 0 14px var(--accent-color);
+    max-height: 340px;
+    border-radius: 10px;
+    display: block;
+    border: 1.5px solid transparent;
+    box-shadow:
+        0 0 1px var(--accent-color),
+        0 0 6px var(--accent-color),
+        0 0 9px var(--accent-color),
+        0 0 14px var(--accent-color);
+    margin-right: 25px;
 }
 
 @media screen and (max-width: 768px) {
@@ -63,6 +64,7 @@
 
 .additionalInfo p {
     margin: 0;
+    font-weight: bold;
 }
 
 .submitButton {
