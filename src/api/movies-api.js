@@ -56,7 +56,7 @@ export const fetchSingleMovie = async (movieId) => {
 export const fetchMovieCast = async (movieId) => {
   try {
     const response = await axiosInstance.get(`/movie/${movieId}/credits`);
-    return response.data.results;
+    return response.data.cast;
 
   } catch (error) {
     console.error('Error fetching movies:', error.message);
