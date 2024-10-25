@@ -7,14 +7,14 @@ import { fetchMovieCast } from '../../api/movies-api';
 
 const MovieCast = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
 
   useEffect(() => {
     const getCasts = async () => {
       try {
-        setError(null);
+        setError(false);
         setIsLoading(true);
 
         const castData = await fetchMovieCast(movieId);

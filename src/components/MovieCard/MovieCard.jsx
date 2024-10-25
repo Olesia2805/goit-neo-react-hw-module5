@@ -2,7 +2,6 @@ import cardCss from './MovieCard.module.css';
 import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie, location }) => {
-  console.log(location);
   return (
     <Link
       to={`/movie/${movie.id}`}
