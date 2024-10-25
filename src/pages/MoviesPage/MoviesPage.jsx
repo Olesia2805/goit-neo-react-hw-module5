@@ -4,12 +4,15 @@ import { toast } from 'react-hot-toast';
 import MovieList from '../../components/MovieList/MovieList';
 import Loader from '../../components/Loader/Loader';
 import { fetchMovies } from '../../api/movies-api';
+import { useLocation } from 'react-router-dom';
 
 const MoviePage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  const location = useLocation();
 
   useEffect(() => {
     if (!inputValue) return;
@@ -79,7 +82,7 @@ const MoviePage = () => {
       {error && <p>Something went wrong. Please try again.</p>}
       <>
         {movies.length > 0 ? (
-          <MovieList movies={movies} />
+          <MovieList movies={movies} location={location} />
         ) : (
           !isLoading &&
           !error && <p>No movies to display. Please search for a movie.</p>

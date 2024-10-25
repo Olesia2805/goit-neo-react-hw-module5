@@ -1,6 +1,12 @@
 import detailsCss from './MovieDetailsPage.module.css';
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { fetchSingleMovie } from '../../api/movies-api';
 import Loader from '../../components/Loader/Loader';
 import { IoArrowUndoOutline } from 'react-icons/io5';
@@ -10,6 +16,9 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const location = useLocation();
+  const backPath = useRef(location.state || '/movie');
 
   useEffect(() => {
     const getSingleMovie = async () => {
@@ -31,9 +40,11 @@ const MovieDetailsPage = () => {
 
   return (
     <main className={detailsCss.main}>
-      <button className={detailsCss.submitButton}>
-        <IoArrowUndoOutline /> Go back
-      </button>
+      <Link to={backPath.current}>
+        <button className={detailsCss.submitButton} type="button">
+          <IoArrowUndoOutline /> Go back
+        </button>
+      </Link>
       {isLoading && <Loader />}
       {error && <p>Something went wrong. Please try again.</p>}
       {movie ? (
