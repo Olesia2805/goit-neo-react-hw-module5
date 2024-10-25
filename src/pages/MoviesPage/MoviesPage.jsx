@@ -71,8 +71,8 @@ const MoviePage = () => {
       });
       return;
     }
+
     setInputValue(inputValue);
-    setMovies([]);
   };
 
   return (
