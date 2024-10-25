@@ -18,7 +18,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
 
   const location = useLocation();
-  const backPath = useRef(location.state || '/movie');
+  const backPath = useRef(location.state || '/');
 
   useEffect(() => {
     const getSingleMovie = async () => {
