@@ -1,51 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import searchCss from './SearchBar.module.css';
-import { toast } from 'react-hot-toast';
-import { useSearchParams } from 'react-router-dom';
 
-const SearchBar = ({ onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
-  const [params, setParams] = useSearchParams();
-
-  const queryValue = params.get('title') ?? '';
-
-  useEffect(() => {
-    if (queryValue) {
-      setInputValue(queryValue);
-    }
-  }, [queryValue]);
-
-  useEffect(() => {
-    if (queryValue) {
-      onSubmit(queryValue);
-    }
-  }, []);
+const SearchBar = ({ value, onChange }) => {
+  const [inputValue, setInputValue] = useState(value);
 
   const handleChange = e => {
     const value = e.target.value;
     setInputValue(value);
-
-    if (value.trim() === '') {
-      params.delete('title');
-    } else {
-      params.set('title', value);
-    }
-    setParams(params);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (inputValue.trim() === '') {
-      toast.error('Please enter a search term', {
-        style: {
-          background: 'red',
-          color: '#fff',
-        },
-      });
-      return;
-    }
-
-    onSubmit(inputValue.trim());
+    onChange(inputValue.trim());
     setInputValue('');
   };
 
