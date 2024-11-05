@@ -62,9 +62,16 @@ const MovieDetailsPage = () => {
             <h3 className={detailsCss.overview}>Overview</h3>
             <p className={detailsCss.textOverview}>{movie.overview}</p>
             <h4 className={detailsCss.genres}>Genres</h4>
-            <p className={detailsCss.genersList}>
-              {movie.genres.map(genre => genre.name).join(', ')}
-            </p>
+            {movie.genres.lenght > 0 ? (
+              <p className={detailsCss.genersList}>
+                {movie.genres.map(genre => genre.name).join(', ')}
+              </p>
+            ) : (
+              <p>
+                Sorry, we could not find any genres for this movie. Be the first
+                to decide which genres it belongs to!
+              </p>
+            )}
           </div>
         </div>
       ) : (

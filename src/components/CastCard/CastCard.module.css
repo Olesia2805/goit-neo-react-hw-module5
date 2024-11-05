@@ -1,23 +1,23 @@
 .movieImg {
-    width: 150px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.7);
+  width: 100px;
+  height: 147px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.7);
 }
 
 .name {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    color: var(--accent-color);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: var(--accent-color);
 }
 
 .character {
-    font-size: 20px;
-    color: var(--secondary-color);
+  font-size: 20px;
+  color: var(--secondary-color);
 }
 
 .character span {
-    font-weight: bold;
+  font-weight: bold;
 }

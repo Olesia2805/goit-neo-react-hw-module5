@@ -1,42 +1,42 @@
 .movieImg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease;
-    border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  border-radius: 8px;
 }
 
 .movieName {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    color: var(--background-primary-color);
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: var(--background-primary-color);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  font-size: 30px;
 }
 
 .cardLink::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    border-radius: 8px;
-    transition: opacity 0.3s ease;
-    border: 5px var(--accent-color) solid;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  border: 5px var(--accent-color) solid;
 }
 
 .cardLink:hover::after {
-    opacity: 1;
+  opacity: 1;
 }
 
 .cardLink:hover .movieName {
-    opacity: 1;
+  opacity: 1;
 }
